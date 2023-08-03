@@ -9,12 +9,14 @@
 
 ## カリキュラム外技術
  - simple_calender
+ - ransack
 
  ## アプリケーションの実行手順
   ```
   $ git clone https://github.com/Jinteng-Yougui/graduation_app.git 
-  $ cd iwaigotauto 
+  $ cd graduation_app
   $ bundle install
+  $ yarn install
   $ rails db:create && rails db:migrate
   $ rails s
   ```
