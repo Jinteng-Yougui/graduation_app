@@ -26,6 +26,6 @@
  [テーブル定義書](https://docs.google.com/spreadsheets/d/1e8fFRM11rXSeeq2lpBC3qI-VcUNWEEvjdLwvdZyqtno/edit?usp=sharing)  
  [ワイヤーフレーム](https://drive.google.com/file/d/1NUPZoTZOaiiGZwh5tmbf4bAt8yGQbgQW/view?usp=sharing)
 
-##  ER図、、画面遷移図の画像
+##  ER図、画面遷移図の画像
  ![ER図](./ER.png)  
  ![画面遷移図](./map.png)
