@@ -11,11 +11,13 @@
  - simple_calender
 
  ## アプリケーションの実行手順
+  ```
   $ git clone https://github.com/Jinteng-Yougui/graduation_app.git 
   $ cd iwaigotauto 
   $ bundle install
   $ rails db:create && rails db:migrate
-  $ rails s  
+  $ rails s
+  ```
 
 ## カタログ設計、テーブル定義書、ワイヤーフレームの共有リンク
  [カタログ設計](https://docs.google.com/spreadsheets/d/1_TFuGwPiHCuG-bPi9dH-qgoztzAOmDAhTqOLpczz1gI/edit?usp=sharing)  
