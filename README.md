@@ -1,24 +1,27 @@
-# README
+# 卒業課題
+## 開発言語バージョン
+ - rails 6.1.6
+ - ruby 3.0.1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 就業Termで学んだ技術
+ - devise
+ - AWS EC2
 
-Things you may want to cover:
+## カリキュラム外技術
+ - simple_calender
 
-* Ruby version
+ ## アプリケーションの実行手順
+  $ git clone https://github.com/Jinteng-Yougui/graduation_app.git 
+  $ cd iwaigotauto 
+  $ bundle install
+  $ rails db:create && rails db:migrate
+  $ rails s  
 
-* System dependencies
+## カタログ設計、テーブル定義書、ワイヤーフレームの共有リンク
+ [カタログ設計](hhttps://docs.google.com/spreadsheets/d/1_TFuGwPiHCuG-bPi9dH-qgoztzAOmDAhTqOLpczz1gI/edit?usp=sharing)  
+ [テーブル定義書](https://docs.google.com/spreadsheets/d/1e8fFRM11rXSeeq2lpBC3qI-VcUNWEEvjdLwvdZyqtno/edit?usp=sharing)  
+ [ワイヤーフレーム](https://drive.google.com/file/d/1NUPZoTZOaiiGZwh5tmbf4bAt8yGQbgQW/view?usp=sharing)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##  ER図、、画面遷移図の画像
+ ![ER図](https://drive.google.com/file/d/1uUaGjueb2pZEqtIaLlouaYpNKkntdUwz/view?usp=sharing)  
+ ![画面遷移図](https://drive.google.com/file/d/1_wyE1w_0B1A7-IvSNkpnhOr46PX_sHOA/view?usp=sharing)
