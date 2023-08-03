@@ -18,10 +18,10 @@
   $ rails s  
 
 ## カタログ設計、テーブル定義書、ワイヤーフレームの共有リンク
- [カタログ設計](hhttps://docs.google.com/spreadsheets/d/1_TFuGwPiHCuG-bPi9dH-qgoztzAOmDAhTqOLpczz1gI/edit?usp=sharing)  
+ [カタログ設計](https://docs.google.com/spreadsheets/d/1_TFuGwPiHCuG-bPi9dH-qgoztzAOmDAhTqOLpczz1gI/edit?usp=sharing)  
  [テーブル定義書](https://docs.google.com/spreadsheets/d/1e8fFRM11rXSeeq2lpBC3qI-VcUNWEEvjdLwvdZyqtno/edit?usp=sharing)  
  [ワイヤーフレーム](https://drive.google.com/file/d/1NUPZoTZOaiiGZwh5tmbf4bAt8yGQbgQW/view?usp=sharing)
 
 ##  ER図、、画面遷移図の画像
- ![ER図](https://drive.google.com/file/d/1uUaGjueb2pZEqtIaLlouaYpNKkntdUwz/view?usp=sharing)  
- ![画面遷移図](https://drive.google.com/file/d/1_wyE1w_0B1A7-IvSNkpnhOr46PX_sHOA/view?usp=sharing)
+ [ER図](https://drive.google.com/file/d/1uUaGjueb2pZEqtIaLlouaYpNKkntdUwz/view?usp=sharing)  
+ [画面遷移図](https://drive.google.com/file/d/1_wyE1w_0B1A7-IvSNkpnhOr46PX_sHOA/view?usp=sharing)
