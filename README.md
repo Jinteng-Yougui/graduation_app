@@ -27,5 +27,5 @@
  [ワイヤーフレーム](https://drive.google.com/file/d/1NUPZoTZOaiiGZwh5tmbf4bAt8yGQbgQW/view?usp=sharing)
 
 ##  ER図、、画面遷移図の画像
- [ER図](https://drive.google.com/file/d/1uUaGjueb2pZEqtIaLlouaYpNKkntdUwz/view?usp=sharing)  
- [画面遷移図](https://drive.google.com/file/d/1_wyE1w_0B1A7-IvSNkpnhOr46PX_sHOA/view?usp=sharing)
+ ![ER図](./ER.png)  
+ ![画面遷移図](./map.png)
