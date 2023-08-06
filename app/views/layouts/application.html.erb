@@ -12,7 +12,6 @@
 
   <body>
     <% if user_signed_in? %>
-      <%# bookings_pathの部分は変更予定 %>
       <%= link_to "新規作成", users_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
