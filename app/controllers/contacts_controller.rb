@@ -1,9 +1,12 @@
 class ContactsController < ApplicationController
+before_action :set_contact, only:%i[ show edit update destroy]
+before_action :forbid_login_user, {only: [:top]}
   def index
     @contacts = Contact.all
   end
 
   def edit
+    @contact = Contact.find(params[:id])
   end
 
   def destroy
