@@ -7,15 +7,17 @@
   <%= csp_meta_tag %>
   
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
 
   <body>
-  <%= link_to root_path do %>
-    <%= image_tag 'logo.jpg' %>
-  <% end %>
-  <% if user_signed_in? %>
-  <%= link_to "新規作成", new_user_session_path %>
+    <%= link_to root_path do %>
+      <%= image_tag 'logo.jpg' %>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to "新規作成", new_user_session_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>
