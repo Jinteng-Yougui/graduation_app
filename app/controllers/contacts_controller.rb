@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
 before_action :set_contact, only:%i[ show edit update destroy]
 before_action :forbid_login_user, {only: [:top]}
+before_action :set_q, only: [:index, :search]
   def index
     @contacts = Contact.all
     @user = current_user
@@ -22,4 +23,15 @@ before_action :forbid_login_user, {only: [:top]}
       format.json { head :no_content }  
     end
   end
+
+  def search
+    @results = @q.result
+  end
+
+  private
+
+  def set_q
+    @q = Contact.ransack(params[:q])
+  end
+
 end

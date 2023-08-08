@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :contacts do
     collection do
-    post :confirm
+      post :confirm
+      get 'search'
     end
   end
   resources :categories, only: [:new, :create, :index, :edit, :destroy]
