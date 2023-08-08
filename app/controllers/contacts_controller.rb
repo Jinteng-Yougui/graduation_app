@@ -3,6 +3,11 @@ before_action :set_contact, only:%i[ show edit update destroy]
 before_action :forbid_login_user, {only: [:top]}
   def index
     @contacts = Contact.all
+    @user = current_user
+  end
+
+  def new
+    @contact = Contact.new
   end
 
   def edit

@@ -1,4 +1,4 @@
-<h1>Usernameのページ</h1>
+<h1><%= @user.name %>のページ</h1>
 <p class="text-center"><%= flash[:notice] %></p>
 <head>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -18,7 +18,8 @@
     <thead>
       <tr>
         <th>名前</th>
-        <th>メール</th>
+        <th>日付</th>
+        <th>祝い言カテゴリー</th>
       </tr>
     </thead>
 
@@ -26,7 +27,8 @@
       <% @contacts.each do |contact| %>
         <tr>
           <td><%= contact.name %></td>
-          <td><%= contact.email %></td>
+          <td><%= contact.bookings.date_on %></td>
+          <td><%= contact.categories.name %></td>
           <td><button type="button" class="btn btn-outline-info"><%= link_to '詳細', booking_path(task.id) %></button></td>
         <td><button type="button" class="btn btn-outline-success"><%= link_to "編集", edit_task_path(task.id) %></button></td>
         <td><button type="button" class="btn btn-outline-danger"><%= link_to "削除", task_path(task.id), method: :delete, data: {confirm: '本当に削除しますか？'} %></button></td>
