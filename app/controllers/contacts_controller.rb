@@ -13,7 +13,7 @@ before_action :set_q, only: [:index, :search]
   end
 
   def create
-    @contact= current_user.contacts.buil(contact_params)
+    @contact= current_user.contacts.build(contact_params)
 		if params[:back]
       render :new
 	  else
@@ -59,6 +59,8 @@ before_action :set_q, only: [:index, :search]
 
   def search
     @results = @q.result
+
+    render :index
   end
 
   private
@@ -68,7 +70,7 @@ before_action :set_q, only: [:index, :search]
   end
 
   def contact_params
-    params.require(:contact).permit(:name, :category)
+    params.require(:contact).permit(:name, :email)
   end
 
 end

@@ -21,16 +21,6 @@
     <%= form.text_field :email %>
   </div>
 
-  <div class="field">
-    <%= form.label :祝い言送信予定日 %>
-    <%= form.date_field :date_on %>
-  </div>
-
-  <% Category.all.each do |category| %>
-    <%= form.check_box :category_ids, { multiple: true, checked: category[:checked], disabled: category[:disabled], include_hidden: false }, category[:id] %>
-    <%= form.category :category_ids, category.name %>
-  <% end %>
-
   <div class="actions">
     <%= form.submit :登録, class: "btn btn-warning" %>
   </div>
