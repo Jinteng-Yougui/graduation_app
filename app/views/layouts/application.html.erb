@@ -17,7 +17,7 @@
       <% image_tag 'logo.jpg' %>
     <% end %>
     <% if user_signed_in? %>
-      <%= link_to "新規作成", new_user_session_path %>
+      <%= link_to "祝い言を登録", new_booking_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>
