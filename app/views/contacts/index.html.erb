@@ -30,9 +30,9 @@
           <td><%= contact.name %></td>
           <td><%= contact.bookings.date_on %></td>
           <td><%= contact.categories.name %></td>
-          <td><button type="button" class="btn btn-outline-info"><%= link_to '詳細', booking_path(task.id) %></button></td>
-        <td><button type="button" class="btn btn-outline-success"><%= link_to "編集", edit_task_path(task.id) %></button></td>
-        <td><button type="button" class="btn btn-outline-danger"><%= link_to "削除", task_path(task.id), method: :delete, data: {confirm: '本当に削除しますか？'} %></button></td>
+          <td><button type="button" class="btn btn-outline-info"><%= link_to '詳細', booking_path(contact.id) %></button></td>
+        <td><button type="button" class="btn btn-outline-success"><%= link_to "編集", edit_contact_path(contact.id) %></button></td>
+        <td><button type="button" class="btn btn-outline-danger"><%= link_to "削除", contact_path(contact.id), method: :delete, data: {confirm: '本当に削除しますか？'} %></button></td>
         </tr>
       <% end %>
     </tbody>
@@ -51,4 +51,4 @@
 
 <%= link_to '連絡先を追加', new_contact_path %>
 
-<%= paginate @tasks %>
+<%= paginate @contacts %>

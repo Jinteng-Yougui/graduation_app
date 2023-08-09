@@ -5,14 +5,42 @@ before_action :set_q, only: [:index, :search]
   def index
     @contacts = Contact.all
     @user = current_user
+    @contacts = @contacts.page(params[:page]).per(5)
   end
 
   def new
     @contact = Contact.new
   end
 
+  def create
+    @contact= current_user.contacts.buil(contact_params)
+		if params[:back]
+      render :new
+	  else
+		  if @contact.save
+        flash[:notice] = "連絡先の登録が完了しました！"
+        redirect_to contacts_path
+		  else
+       render :new
+		  end
+    end
+  end
+
+  def show 
+  end
+
   def edit
     @contact = Contact.find(params[:id])
+  end
+
+  def update
+    @contact = Contact.find(params[:id])
+    if @contact.update(contact_params)
+      flash[:notice] = "編集しました。"
+      redirect_to contact_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -24,6 +52,11 @@ before_action :set_q, only: [:index, :search]
     end
   end
 
+  def confirm
+    @contact = current_user.contacts.build(contact_params)
+    render :new if @contact.invalid?
+  end
+
   def search
     @results = @q.result
   end
@@ -32,6 +65,10 @@ before_action :set_q, only: [:index, :search]
 
   def set_q
     @q = Contact.ransack(params[:q])
+  end
+
+  def contact_params
+    params.require(:contact).permit(:name, :category)
   end
 
 end
