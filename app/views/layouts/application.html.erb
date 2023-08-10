@@ -16,13 +16,15 @@
     <%= link_to root_path do %>
       <% image_tag 'logo.jpg' %>
     <% end %>
-      <% if user_signed_in? %>
-        <li class="nav-item"><%= link_to "祝い言を登録", new_booking_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-      <% else %>
+    <% if user_signed_in? %>
+      <li class="nav-item"><%= link_to "祝い言を登録", new_booking_path, class: "nav-link" %></li>
+      <br>
+      <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+    <% else %>
       <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
+      <br>
       <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
-      <% end %>
+    <% end %>
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>
