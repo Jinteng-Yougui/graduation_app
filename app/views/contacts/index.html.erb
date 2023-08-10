@@ -35,18 +35,18 @@
         <tr>
           <td><%= contact.name %></td>
           <td>
-            <%= contact.bookings.each do |booking| %>
+            <% contact.bookings.each do |booking| %>
               <%= booking.date_on %>
             <% end %>
           </td>
           <td>
-            <%= contact.categories.each do |category| %>
+            <% contact.categories.each do |category| %>
               <%= category.name %>
             <% end %>
           </td>
           <td><button type="button" class="btn btn-outline-info"><%= link_to '詳細', booking_path(contact.id) %></button></td>
-        <td><button type="button" class="btn btn-outline-success"><%= link_to "編集", edit_contact_path(contact.id) %></button></td>
-        <td><button type="button" class="btn btn-outline-danger"><%= link_to "削除", contact_path(contact.id), method: :delete, data: {confirm: '本当に削除しますか？'} %></button></td>
+        <td><button type="button" class="btn btn-outline-success"><%= link_to "連絡先を編集", edit_contact_path(contact.id) %></button></td>
+        <td><button type="button" class="btn btn-outline-danger"><%= link_to "連絡先を削除", contact_path(contact.id), method: :delete, data: {confirm: '本当に削除しますか？'} %></button></td>
         </tr>
       <% end %>
     </tbody>

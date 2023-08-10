@@ -12,7 +12,7 @@
 
 <p>
   <strong>祝い言を送る相手: </strong>
-    <%= @booking.contact_id, Contact.all.pluck(:name, :id) %>
+    <%= @booking.contact.name %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <strong>祝い言カテゴリー: </strong>
-    <%= @booking.category_id, Category.all.pluck(:name, :id) %>
+    <%= @booking.category.name %>
 </p>
 
 <%= link_to '編集', edit_booking_path(@booking) %> |
