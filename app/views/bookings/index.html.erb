@@ -1,4 +1,4 @@
-<h1>連絡先一覧</h1>
+<h1><%= @user.name %>のページ</h1>
 <p class="text-center"><%= flash[:notice] %></p>
 <head>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -7,6 +7,13 @@
 </head>
 
 <body>
+<h2>送信予定一覧</h2>
+<%= search_form_for @q, url: search_bookings_path do |f| %>
+  <%= f.label :contact_name_cont, 'ユーザー名' %>
+  <%= f.search_field :contact_name_cont %>
+  <br>
+  <%= f.submit '検索' %>
+<% end %>
   <div id="particles-js"></div>
   <div id="wrapper">
     <p><br><a href="https://vincentgarreau.com/particles.js/" target="_blank"></a></p>
@@ -24,13 +31,12 @@
     </thead>
 
     <tbody>
-      <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.contact.name %></td>
-          <td><%= booking.date_on %></td>
-          <td><%= booking.category.name %></td>
-          <td><button type="button" class="btn btn-outline-success"><%= link_to "連絡先を編集", edit_contact_path(booking.contact.id) %></button></td>
-          <td><button type="button" class="btn btn-outline-danger"><%= link_to "連絡先を削除", contact_path(booking.contact.id), method: :delete, data: {confirm: '本当に削除しますか？'} %></button></td>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.contact.name %></td>
+        <td><%= booking.date_on %></td>
+        <td><%= booking.category.name %></td>          
+        <td><button type="button" class="btn btn-outline-info"><%= link_to '詳細', booking_path(booking.id) %></button></td>
         </tr>
       <% end %>
     </tbody>
@@ -38,7 +44,7 @@
 
 <br>
 
-<%= link_to '連絡先を追加', new_contact_path %>
+<%= link_to '連絡先一覧', contacts_path %>
 
 <%= paginate @bookings %>
 </body>

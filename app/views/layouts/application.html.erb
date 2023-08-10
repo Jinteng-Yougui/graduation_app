@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+  <title>Iwaigotauto</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <%= link_to root_path do %>
+    <% image_tag 'logo.jpg' %>
+  <% end %>
+  <% if user_signed_in? %>
+    <ul class="nav navbar-nav navbar-right">
+    <li class="nav-item"><%= link_to "祝い言を登録", new_booking_path, class: "nav-link" %></li>
+    <li class="nav-item"><%= link_to "管理者画面", rails_admin_path, class: "nav-link" %></li>
+    <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+  <% else %>
+    <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
+    <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
+  <% end %>
+    </ul>
+  </nav>
+  </div>
   
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,18 +28,6 @@
   </head>
 
   <body>
-    <%= link_to root_path do %>
-      <% image_tag 'logo.jpg' %>
-    <% end %>
-    <% if user_signed_in? %>
-      <li class="nav-item"><%= link_to "祝い言を登録", new_booking_path, class: "nav-link" %></li>
-      <br>
-      <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-    <% else %>
-      <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
-      <br>
-      <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
-    <% end %>
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>

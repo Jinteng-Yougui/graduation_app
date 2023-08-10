@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[ show edit update destroy ]
+  before_action :set_q, only: [:index, :search]
 
   # GET /bookings or /bookings.json
   def index
@@ -64,7 +65,7 @@ class BookingsController < ApplicationController
 
     render :index
   end
-  
+
   private
 
   def set_q

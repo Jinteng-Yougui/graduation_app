@@ -3,7 +3,7 @@ before_action :set_contact, only:%i[ show edit update destroy]
 before_action :forbid_login_user, {only: [:top]}
 before_action :set_q, only: [:index, :search]
   def index
-    @contacts = Booking.all
+    @contacts = Contact.all
     @user = current_user
     @contacts = @contacts.page(params[:page]).per(5)
   end

@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  root 'contactss#index'
-  resources :bookings
-  devise_for :users
-  resources :contacts do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root 'bookings#index'
+  resources :bookings do
     collection do
       post :confirm
       get 'search'
     end
   end
+  devise_for :users
+  resources :contacts
   resources :categories, only: [:new, :create, :index, :edit, :destroy]
 
   if Rails.env.development?
