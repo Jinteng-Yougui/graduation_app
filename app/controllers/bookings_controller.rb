@@ -28,6 +28,14 @@ class BookingsController < ApplicationController
     
     respond_to do |format|
       if @booking.save
+        contact = Contact.find_by(name: @booking.name)
+        selected_date = params[:booking][:date_on]
+        if contact
+          EmailSender.send_scheduled_email(contact.email, @booking.content, @booking.date_on)
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @booking.errors, status: :unprocessable_entity }
+        end
         format.html { redirect_to booking_url(@booking), notice: "祝い言を登録しました。" }
         format.json { render :show, status: :created, location: @booking }
       else
