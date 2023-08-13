@@ -1,14 +1,9 @@
 <h1><%= @user.name %>のページ</h1>
-<p style="margin: 20px; font-size: 20px;">
+<p style="margin: 20px; font-size: 14px;">
   うっかり仲良しの友人の誕生日を忘れていて後になって気がついた、自分の結婚記念日にパートナーにメッセージを送るのを忘れてしまった、クリスマスのメッセージや新年の挨拶を送っていなかった、などありませんか？大切な日の祝い言（ごと）を伝え忘れて苦い経験をしてしまったことがある方は多いのではないでしょうか。この問題を解決してくれるのがこのアプリです。つい忘れがちな、自分の大切な人への祝い言を自動で送ってくれます。
 </p>
 <div style="width: 500px;">
 <p class="text-center"><%= flash[:notice] %></p>
-<head>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-8/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-8/css/5-8.css">
-</head>
 
 <body>
 <h2>送信予定一覧</h2>
@@ -18,13 +13,6 @@
   <br>
   <%= f.submit '検索' %>
 <% end %>
-  <div id="particles-js"></div>
-  <div id="wrapper">
-    <p><br><a href="https://vincentgarreau.com/particles.js/" target="_blank"></a></p>
-  </div>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-8/js/5-8.js"></script>
-
   <table class="table">
     <thead>
       <tr>
@@ -45,10 +33,6 @@
       <% end %>
     </tbody>
   </table>
-
-<br>
-
-<%= link_to '連絡先一覧', contacts_path %>
 
 <%= paginate @bookings %>
 </body>

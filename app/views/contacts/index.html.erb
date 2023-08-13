@@ -1,19 +1,9 @@
 <h1>連絡先一覧</h1>
 <p class="text-center"><%= flash[:notice] %></p>
-<head>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-8/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-8/css/5-8.css">
-</head>
+<br>
+<%= link_to '連絡先を追加', new_contact_path %>
 
 <body>
-  <div id="particles-js"></div>
-  <div id="wrapper">
-    <p><br><a href="https://vincentgarreau.com/particles.js/" target="_blank"></a></p>
-  </div>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-8/js/5-8.js"></script>
-
   <table class="table">
     <thead>
       <tr>
@@ -33,10 +23,6 @@
       <% end %>
     </tbody>
   </table>
-
-<br>
-
-<%= link_to '連絡先を追加', new_contact_path %>
 
 <%= paginate @contacts %>
 </body>
