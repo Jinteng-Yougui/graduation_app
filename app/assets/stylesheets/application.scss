@@ -15,7 +15,17 @@
  */
  @import "bootstrap";
 
-img{
-  margin: 20px 20px;
-  display: block
+ .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.nav-links {
+  margin-left: 20px;
 }

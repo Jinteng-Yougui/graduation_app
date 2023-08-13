@@ -5,31 +5,39 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= link_to root_path do %>
-      <% image_tag 'logo.jpg' %>
-    <% end %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <% if user_signed_in? %>
-      <li class="nav-item"><%= link_to '連絡先一覧', contacts_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "祝い言を登録", new_booking_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "管理者画面", rails_admin_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-    <% else %>
-      <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
-    <% end %>
-  
- 
   </head>
-
+  
   <body>
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
+    <div class="header">
+      <%= link_to root_path do %>
+        <% image_tag 'logo.jpg', alt: 'Logo' %>
+      <% end %>
+      <% if user_signed_in? %>
+        <table class="nav-links">
+          <tr>
+            <td><%= link_to '連絡先一覧', contacts_path, class: "nav-link" %></td>
+            <td><%= link_to "祝い言を登録", new_booking_path, class: "nav-link" %></td>
+            <td><%= link_to "管理者画面", rails_admin_path, class: "nav-link" %></td>
+            <td><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></td>
+          </tr>
+        </table>
+      <% else %>
+        <table class="nav-links">
+          <tr>
+            <td><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></td>
+            <td><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
     <div class='container'>
+      <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </div>
   </body>
