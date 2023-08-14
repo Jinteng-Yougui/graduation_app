@@ -4,8 +4,13 @@ class BookingsController < ApplicationController
 
   # GET /bookings or /bookings.json
   def index
-    @bookings = Booking.all
+    if params[:q]
+      @bookings = @q.result
+    else
+      @bookings = current_user.bookings
+    end
     @user = current_user
+    @bookings = Booking.all
     @bookings = @bookings.page(params[:page]).per(5)
   end
 
@@ -25,6 +30,8 @@ class BookingsController < ApplicationController
   # POST /bookings or /bookings.json
   def create
     @booking = Booking.new(booking_params)
+    Booking.create(booking_params)
+    redirect_to root_path
     
     respond_to do |format|
       if @booking.save
@@ -68,14 +75,14 @@ class BookingsController < ApplicationController
 
   def search
     @results = @q.result
-
+    @user = current_user
     render :index
   end
 
   private
 
   def set_q
-    @q = Booking.ransack(params[:q])
+    @q = current_user.bookings.ransack(params[:q])
   end
 
     # Use callbacks to share common setup or constraints between actions.

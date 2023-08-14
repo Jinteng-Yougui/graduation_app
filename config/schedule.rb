@@ -9,11 +9,13 @@
 
 set :output, "./log/cron.log"
 #
-every 1.day at: '12:00 pm' do
+every 1.day at: '4:00 pm' do
 #   command "/usr/bin/some_great_command"
   runner "EmailSender.send_scheduled_emails"
 #   rake "some:great:rake:task"
 end
+
+job_type :runner, "cd :path && PATH=':path_env' bin/rails runner -e :environment ':task' :output"
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"

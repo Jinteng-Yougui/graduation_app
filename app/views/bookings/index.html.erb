@@ -1,15 +1,31 @@
-<h1><%= @user.name %>のページ</h1>
-<p style="margin: 20px; font-size: 14px;">
-  うっかり仲良しの友人の誕生日を忘れていて後になって気がついた、自分の結婚記念日にパートナーにメッセージを送るのを忘れてしまった、クリスマスのメッセージや新年の挨拶を送っていなかった、などありませんか？大切な日の祝い言（ごと）を伝え忘れて苦い経験をしてしまったことがある方は多いのではないでしょうか。この問題を解決してくれるのがこのアプリです。つい忘れがちな、自分の大切な人への祝い言を自動で送ってくれます。
-</p>
+<div class="container mt-5 text-center">
+  <h1><%= @user.name %>のページ</h1>
+  <p style="margin: 20px; font-size: 14px;">
+    うっかり仲良しの友人の誕生日を忘れていて後になって気がついた、自分の結婚記念日にパートナーにメッセージを送るのを忘れてしまった、クリスマスのメッセージや新年の挨拶を送っていなかった、などありませんか？大切な日の祝い言（ごと）を伝え忘れて苦い経験をしてしまったことがある方は多いのではないでしょうか。この問題を解決してくれるのがこのアプリです。つい忘れがちな、自分の大切な人への祝い言を自動で送ってくれます。
+  </p>
+</div>
+
 <div style="width: 500px;">
 <p class="text-center"><%= flash[:notice] %></p>
+</div>
 
 <body>
-  <h2>送信予定一覧</h2>
+  <div class="container mt-5 text-center">
+    <h2>送信予定一覧</h2>
+    <%= month_calendar bookings: @bookings do |date, bookings| %>
+      <div class="day">
+        <%= date %>
+      </div>
+      <% bookings.each do |booking| %>
+        <div>
+          <%= booking.title %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
   <table>
-    <%= search_form_for @q, url: search_bookings_path do |f| %>
+    <%= search_form_for @q do |f| %>
       <tr>
         <td><%= f.label :contact_name_cont, 'ユーザー名' %></td>
         <td><%= f.search_field :contact_name_cont %></td>

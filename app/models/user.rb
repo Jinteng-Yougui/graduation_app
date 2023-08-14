@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :contacts
+  has_many :bookings, through: :contacts
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
