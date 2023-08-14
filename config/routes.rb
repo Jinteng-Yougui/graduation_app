@@ -7,7 +7,10 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
   resources :contacts
   resources :categories, only: [:new, :create, :index, :edit, :destroy]
   devise_scope :user do
