@@ -6,12 +6,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  </head>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
   
   <body>
     <div class="header">
       <%= link_to root_path do %>
-        <% image_tag 'logo.jpg', alt: 'Logo' %>
+        <% image_tag 'logo.png', alt: 'Logo' %>
       <% end %>
       <% if user_signed_in? %>
         <table class="nav-links">
