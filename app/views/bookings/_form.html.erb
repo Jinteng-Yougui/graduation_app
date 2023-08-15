@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form_group pt-4 pb-3">
     <%= form.label :タイトル %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: "メールのタイトルをこちらに入力してください", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :内容 %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, placeholder: "祝い言をこちらに入力してください", row: 7, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :日付 %>
-    <%= form.date_field :date_on %>
+    <%= form.date_field :start_time %>
   </div>
 
   <div class="field">
@@ -36,7 +36,7 @@
     <%= form.select :category_id, Category.all.pluck(:name, :id) %>
   </div>
 
-  <div class="actions">
+  <div class="text-center">
     <%= form.submit :登録, class: "btn btn-warning" %>
   </div>
 <% end %>

@@ -3,6 +3,7 @@ ja:
     js:
       true: True
       false: False
+      iwaigotauto: 祝い言auto
       is_present: 存在する
       is_blank: 空白
       date: 日付 ...
@@ -44,6 +45,7 @@ ja:
       clear_all: "選択解除"
       up: "上"
       down: "下"
+      iwaigotauto: 祝い言auto
       navigation: "ナビゲーション"
       root_navigation: "アクション"
       navigation_static_label: "リンク"
@@ -60,6 +62,7 @@ ja:
     table_headers:
       model_name: "モデル名"
       last_used: "最終アクセス日"
+      last_created: "最終更新日時"
       records: "レコード数"
       username: "ユーザ"
       booking: "祝い言"
@@ -72,6 +75,8 @@ ja:
     actions:
       dashboard:
         title: "サイト管理"
+        iwaigotauto: "祝い言auto"
+        admin: "管理者"
         menu: "ダッシュボード"
         breadcrumb: "ダッシュボード"
       index:

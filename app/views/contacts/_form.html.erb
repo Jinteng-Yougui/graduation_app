@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form_group pt-4 pb-3">
     <%= form.label :名前 %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, placeholder: "（例） 東京 都民", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :メールアドレス %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, placeholder: "（例） tokyo@tomin.co.jp", class: "form-control" %>
   </div>
 
-  <div class="actions">
+  <div class="text-center">
     <%= form.submit :登録, class: "btn btn-warning" %>
   </div>
 <% end %>

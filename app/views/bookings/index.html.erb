@@ -6,56 +6,62 @@
 </div>
 
 <div style="width: 500px;">
-<p class="text-center"><%= flash[:notice] %></p>
+  <p class="text-center"><%= flash[:notice] %></p>
 </div>
 
-<body>
-  <div class="container mt-5 text-center">
-    <h2>送信予定一覧</h2>
-    <%= month_calendar bookings: @bookings do |date, bookings| %>
-      <div class="day">
-        <%= date %>
-      </div>
-      <% bookings.each do |booking| %>
-        <div>
+
+<div class="container mt-5 text-center">
+  <h2>送信予定一覧</h2>
+  <%= month_calendar events: @booking_events do |date, bookings| %>
+    <div class="day">
+    <%= date %>
+    </div>
+    <% bookings.each do |booking| %>
+      <div class="card-header">
+        <div class="card-title">
           <%= booking.title %>
         </div>
-      <% end %>
+        <div class="card-body">
+          <p class="card-text">
+            <%= booking.contact_id %>
+          </p>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
 
-  <table>
-    <%= search_form_for @q do |f| %>
+<table>
+  <%= search_form_for @q do |f| %>
+    <tr>
+      <td><%= f.label :contact_name_cont, 'ユーザー名' %></td>
+      <td><%= f.search_field :contact_name_cont %></td>
+      <td><%= f.submit '検索' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>日付</th>
+      <th>祝い言カテゴリー</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.each do |booking| %>
       <tr>
-        <td><%= f.label :contact_name_cont, 'ユーザー名' %></td>
-        <td><%= f.search_field :contact_name_cont %></td>
-        <td><%= f.submit '検索' %></td>
+        <td><%= booking.contact.name %></td>
+        <td><%= booking.date_on %></td>
+        <td><%= booking.category.name %></td>          
+        <td><button type="button" class="btn btn-outline-info"><%= link_to '詳細', booking_path(booking.id) %></button></td>
       </tr>
     <% end %>
-  </table>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>名前</th>
-        <th>日付</th>
-        <th>祝い言カテゴリー</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.contact.name %></td>
-          <td><%= booking.date_on %></td>
-          <td><%= booking.category.name %></td>          
-          <td><button type="button" class="btn btn-outline-info"><%= link_to '詳細', booking_path(booking.id) %></button></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  </tbody>
+</table>
 
   
 
 <%= paginate @bookings %>
-</body>

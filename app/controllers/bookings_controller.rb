@@ -10,7 +10,9 @@ class BookingsController < ApplicationController
       @bookings = current_user.bookings
     end
     @user = current_user
-    @bookings = Booking.all
+    @booking_events = Booking.where(
+      start_time: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week
+    )
     @bookings = @bookings.page(params[:page]).per(5)
   end
 
@@ -21,6 +23,7 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+    @default_date = params[:default_date].to_date
   end
 
   # GET /bookings/1/edit
@@ -30,12 +33,11 @@ class BookingsController < ApplicationController
   # POST /bookings or /bookings.json
   def create
     @booking = Booking.new(booking_params)
-    Booking.create(booking_params)
     redirect_to root_path
     
     respond_to do |format|
       if @booking.save
-        selected_date = params[:booking][:date_on]
+        selected_date = params[:booking][:start_time]
         contact = Contact.find_by(name: "contact_id")
         if contact
           EmailSender.send_scheduled_email(contact.email, @booking.content, @booking.date_on)
@@ -92,6 +94,6 @@ class BookingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def booking_params
-    params.require(:booking).permit(:title, :content, :date_on, :contact_id, :category_id)
+    params.require(:booking).permit(:title, :content, :date_on, :contact_id, :category_id, :start_time)
   end
 end

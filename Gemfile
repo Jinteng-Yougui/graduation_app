@@ -67,3 +67,4 @@ gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
 gem 'whenever', require: false
 gem 'simple_calendar'
+gem 'rails-i18n'

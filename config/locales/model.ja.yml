@@ -7,7 +7,10 @@ ja:
       label: ラベル
       detail: 詳細
       labeling: ラベル付
-      booking: ああああ
+      booking: 祝い言
+      last created: 最終更新日時
+      date: 日付
+
     attributes:
       content:
         title: タイトル
