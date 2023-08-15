@@ -10,8 +10,8 @@ module Iwaigotauto
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-    config.i18n.available_locales = [:jp, :en]
-    config.i18n.default_locale = :jp
+    config.i18n.available_locales = [:ja, :en]
+    config.i18n.default_locale = :ja
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

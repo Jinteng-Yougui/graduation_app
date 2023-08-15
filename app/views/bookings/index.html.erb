@@ -14,19 +14,11 @@
   <h2>送信予定一覧</h2>
   <%= month_calendar events: @booking_events do |date, bookings| %>
     <div class="day">
-    <%= date %>
+    <%= date.day %>
     </div>
     <% bookings.each do |booking| %>
-      <div class="card-header">
-        <div class="card-title">
-          <%= booking.title %>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            <%= booking.contact_id %>
-          </p>
-        </div>
-      </div>
+      <%= booking.contact.name %>さん宛
+      <p>"<%= booking.category.name %>"の祝い言</p>
     <% end %>
   <% end %>
 </div>

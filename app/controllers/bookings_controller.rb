@@ -23,7 +23,9 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
-    @default_date = params[:default_date].to_date
+    if params[:default_date].present?
+      @default_date = params[:default_date].to_date
+    end
   end
 
   # GET /bookings/1/edit
@@ -33,7 +35,6 @@ class BookingsController < ApplicationController
   # POST /bookings or /bookings.json
   def create
     @booking = Booking.new(booking_params)
-    redirect_to root_path
     
     respond_to do |format|
       if @booking.save
