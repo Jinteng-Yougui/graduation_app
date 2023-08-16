@@ -32,10 +32,12 @@
 }
 
 #wrapper{
+  position: flex;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align:center;
+  z-index: -2;
 }
 
 html,body{

@@ -25,14 +25,13 @@
 
 <table>
   <%= search_form_for @q do |f| %>
-    <tr>
-      <td><%= f.label :contact_name_cont, 'ユーザー名' %></td>
-      <td><%= f.search_field :contact_name_cont %></td>
-      <td><%= f.submit '検索' %></td>
-    </tr>
+    <div class="row">
+      <div class="col-auto"><%= f.search_field :contact_name_cont, placeholder: "祝い言を送る相手", class: "form-control" %></div>
+      <div class="col-auto"><%= f.submit '検索', class: "btn btn-primary" %></div>
+    </div>
   <% end %>
 </table>
-
+<br>
 <table class="table">
   <thead>
     <tr>
