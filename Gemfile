@@ -68,3 +68,4 @@ gem 'cancancan'
 gem 'whenever', require: false
 gem 'simple_calendar'
 gem 'rails-i18n'
+gem 'sidekiq'

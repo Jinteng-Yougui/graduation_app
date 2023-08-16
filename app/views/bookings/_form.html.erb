@@ -21,19 +21,27 @@
     <%= form.text_area :content, placeholder: "祝い言をこちらに入力してください", row: 7, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :祝い言を送る相手 %>
-    <%= form.select :contact_id, Contact.all.pluck(:name, :id) %>
-  </div>
+  <%= form.label :祝い言を送る相手 %>
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= form.select :contact_id, Contact.all.pluck(:name, :id) %>  
+    </button>
+  </div>      
 
   <div class="field">
     <%= form.label :日付 %>
+    <div class="btn-group">
+    <button type="button" class="btn btn-secondary dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <%= form.date_field :start_time %>
+    </button>
   </div>
 
   <div class="field">
     <%= form.label :祝い言カテゴリー %>
+    <div class="btn-group">
+    <button type="button" class="btn btn-secondary dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <%= form.select :category_id, Category.all.pluck(:name, :id) %>
+    </button>
   </div>
 
   <div class="text-center">
