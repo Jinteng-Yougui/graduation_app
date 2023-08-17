@@ -10,6 +10,7 @@
 set :output, "./log/cron.log"
 #
 every 1.day at: '4:00 pm' do
+  if Time.now.to_now > 
 #   command "/usr/bin/some_great_command"
   runner "EmailSender.send_scheduled_emails"
 #   rake "some:great:rake:task"
