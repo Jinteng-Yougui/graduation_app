@@ -45,7 +45,7 @@
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.contact.name %></td>
-        <td><%= booking.start_time %></td>
+        <td><%= booking.start_time.strftime('%Y-%m-%d') %></td>
         <td><%= booking.category.name %></td>          
         <td><button type="button" class="btn btn-outline-info"><%= link_to '詳細', booking_path(booking.id) %></button></td>
       </tr>

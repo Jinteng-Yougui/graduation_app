@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
-before_action :set_contact, only:%i[ show edit update destroy]
 before_action :forbid_login_user, {only: [:top]}
 before_action :set_q, only: [:index, :search]
+
   def index
     @contacts = current_user.contacts
     @user = current_user
@@ -27,6 +27,7 @@ before_action :set_q, only: [:index, :search]
   end
 
   def show 
+    @contact = Contact.find(params[:id])
   end
 
   def edit
@@ -37,14 +38,15 @@ before_action :set_q, only: [:index, :search]
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
       flash[:notice] = "編集しました。"
-      redirect_to contact_path
+      redirect_to contacts_path
     else
       render :edit
     end
   end
 
   def destroy
-  @contact.destroy
+    @contact = Contact.find(params[:id])
+    @contact.destroy
 
     respond_to do |format|
       format.html { redirect_to contacts_url, notice: "連絡先が削除されました。" }

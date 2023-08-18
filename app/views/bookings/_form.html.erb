@@ -22,7 +22,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :祝い言を送る相手 %>
+  <%= form.label :祝い言を送る相手 %>
     <%= form.select :contact_id, current_user.contacts.pluck(:name, :id) %>
   </div>
 
@@ -32,9 +32,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :祝い言カテゴリー %>
+  <%= form.label :祝い言カテゴリー %>
     <%= form.select :category_id, Category.all.pluck(:name, :id) %>
-  </div>
+  </div> 
 
   <div class="text-center">
     <%= form.submit :登録, class: "btn btn-warning" %>
