@@ -25,6 +25,8 @@
     <%= @booking.category.name %>
 </p>
 
-<%= link_to '編集', edit_booking_path(@booking) %> |
-<%= link_to '削除', booking_path(@booking) %> |
-<%= link_to '戻る', root_path %>
+<tr>
+  <td><button type="button" class="btn btn-outline-success"><%= link_to '編集', edit_booking_path(@booking) %></button><td>
+  <td><button type="button" class="btn btn-outline-danger"><%= link_to '削除', booking_path(@booking) %></button></td>
+  <td><button type="button" class="btn btn-outline-secondary"><%= link_to '戻る', root_path %></button></td>
+</tr>
