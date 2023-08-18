@@ -10,11 +10,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-8/css/reset.css">
     <link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-8/css/5-8.css">
+    </head>
+    
+    <body>
     <div id="particles-js"></div>
     <div id="wrapper"></div>
-  </head>
-    
-  <body>
     <div class="header">
       <%= link_to root_path do %>
         <% image_tag 'logo.png', alt: 'Logo' %>
@@ -25,7 +25,7 @@
             <td><%= link_to '連絡先一覧', contacts_path, class: "nav-link" %></td>
             <td><%= link_to "祝い言を登録", new_booking_path, class: "nav-link" %></td>
             <td><%= link_to "管理者画面", rails_admin_path, class: "nav-link" %></td>
-            <td><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></td>
+            <td><%=  button_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></td>
           </tr>
         </table>
       <% else %>
@@ -46,13 +46,13 @@
       <% end %>
       <%= yield %>
     </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Copyright Iwaigotauto.Inc. All rights reserved.</p>
+      </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-8/js/5-8.js"></script>
   </body>
 
-  <footer class="footer">
-    <div class="container">
-      <p class="text-muted">Copyright Iwaigotauto.Inc. All rights reserved.</p>
-    </div>
-  </footer>
 </html>

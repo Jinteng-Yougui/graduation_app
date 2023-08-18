@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :祝い言を送る相手 %>
-    <%= form.select :contact_id, Contact.all.pluck(:name, :id) %>
+    <%= form.select :contact_id, current_user.contacts.pluck(:name, :id) %>
   </div>
 
   <div class="field">

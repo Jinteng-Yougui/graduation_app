@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
       @bookings = current_user.bookings
     end
     @user = current_user
-    @booking_events = Booking.where(
+    @booking_events = current_user.bookings.where(
       start_time: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week
     )
     @bookings = @bookings.page(params[:page]).per(5)
@@ -40,9 +40,6 @@ class BookingsController < ApplicationController
       if @booking.save
         selected_date = params[:booking][:start_time]
         contact = Contact.find_by(name: "contact_id")
-        if contact
-          EmailSender.send_scheduled_email(contact.email, @booking.content, @booking.date_on)
-        end
           
         format.html { redirect_to booking_url(@booking), notice: "祝い言を登録しました。" }
         format.json { render :show, status: :created, location: @booking }
@@ -95,6 +92,6 @@ class BookingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def booking_params
-    params.require(:booking).permit(:title, :content, :date_on, :contact_id, :category_id, :start_time)
+    params.require(:booking).permit(:title, :content, :date_on, :contact_id, :category_id, :start_time, :email)
   end
 end
