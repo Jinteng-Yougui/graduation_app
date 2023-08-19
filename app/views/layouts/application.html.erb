@@ -25,13 +25,15 @@
             <td><%= link_to "祝い言を登録", new_booking_path, class: "nav-link" %></td>
             <td><%= link_to "管理者画面", rails_admin_path, class: "nav-link" %></td>
             <td><%=  button_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></td>
-          </tr>
-        </table>
-      <% else %>
-        <table class="nav-links">
-          <tr>
+            </tr>
+            </table>
+            <% else %>
+            <table class="nav-links">
+            <tr>
             <td><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></td>
             <td><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></td>
+            <td><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "nav-link" %></td>
+            <td><%= link_to 'ゲストログイン（管理者用）', users_guest_admin_sign_in_path, method: :post, class: "nav-link" %></td>
           </tr>
         </table>
       <% end %>

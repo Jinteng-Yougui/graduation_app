@@ -13,4 +13,12 @@ class User < ApplicationRecord
       user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end
+
+  def self.guest_admin
+    find_or_create_by!(email: 'guest_admin@example.com') do |user|
+      user.name = "ゲスト管理者"
+      user.password = SecureRandom.urlsafe_base64
+      user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+    end
+  end
 end
