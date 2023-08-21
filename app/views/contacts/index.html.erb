@@ -1,0 +1,31 @@
+<div>
+  <div class="col-md4 offset-md-4">
+    <h2 class="text-center">連絡先一覧</h2>
+  </div>
+</div>
+<br>
+<%= link_to '連絡先を追加', new_contact_path %>
+
+<body>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>メールアドレス</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contacts.each do |contact| %>
+        <tr>
+          <td><%= contact.name %></td>
+          <td><%= contact.email %></td>
+          <td><button type="button" class="btn btn-outline-success"><%= link_to "連絡先を編集", edit_contact_path(contact.id) %></button></td>
+          <td><button type="button" class="btn btn-outline-danger"><%= link_to "連絡先を削除", contact_path(contact.id), method: :delete, data: {confirm: '本当に削除しますか？'} %></button></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<%= paginate @contacts %>
+</body>

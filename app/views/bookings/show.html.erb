@@ -1,0 +1,30 @@
+<p>
+  <strong>タイトル: </strong>
+  <%= @booking.title %>
+</p>
+
+<p>
+  <strong>内容: </strong>
+  <%= @booking.content %>
+</p>
+
+<p>
+  <strong>祝い言を送る相手: </strong>
+    <%= @booking.contact.name %>
+</p>
+
+<p>
+  <strong>日付: </strong>
+    <%= @booking.date_on %>
+</p>
+
+<p>
+  <strong>祝い言カテゴリー: </strong>
+    <%= @booking.category.name %>
+</p>
+
+<tr>
+  <td><button type="button" class="btn btn-outline-success"><%= link_to '編集', edit_booking_path(@booking) %></button><td>
+  <td><button type="button" class="btn btn-outline-danger"><%= button_to '削除', booking_path(@booking), method: :delete %></button></td>
+  <td><button type="button" class="btn btn-outline-secondary"><%= link_to '戻る', root_path %></button></td>
+</tr>

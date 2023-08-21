@@ -1,0 +1,27 @@
+<%= form_with(model: @contact, local: true ) do |form| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @contact.errors.count %>個のエラーがあります。</h2>
+
+      <ul>
+        <% @contact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form_group pt-4 pb-3">
+    <%= form.label :名前 %>
+    <%= form.text_field :name, placeholder: "（例） 東京 都民", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :メールアドレス %>
+    <%= form.text_field :email, placeholder: "（例） tokyo@tomin.co.jp", class: "form-control" %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit :登録, class: "btn btn-warning" %>
+  </div>
+<% end %>

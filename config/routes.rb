@@ -1,3 +1,25 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root 'bookings#index'
+  resources :bookings do
+    collection do
+      post :confirm
+      get 'search'
+    end
+  end
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
+  resources :contacts
+  resources :categories, only: [:new, :create, :index, :edit, :destroy]
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    post 'users/guest_admin_sign_in', to: 'users/sessions#guest_admin_sign_in'
+  end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
