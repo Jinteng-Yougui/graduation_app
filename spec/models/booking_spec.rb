@@ -4,25 +4,23 @@ RSpec.describe Booking, type: :model do
   describe 'validationのテスト' do
     let!(:user){FactoryBot.create(:user)}
     let!(:contact){FactoryBot.create(:contact, user: user)}
-    let!(:category){FactoryBot.create(:category, user: user)}
-    let!(:booking){FactoryBot.create(:booking, category: category, contact: contact)}
-    let!(:second_booking){FactoryBot.create(:second_booking, title: nil, content: 'お誕生日おめでとうございます', category: '誕生日', contact: 'WEF11')}
-    let!(:thrid_booking){FactoryBot.create(:third_booking, title: こんにちは, content: nil, category: '誕生日', contact: 'WEF11')}
+    let!(:category){FactoryBot.create(:category)}
     context '祝い言のタイトルと内容を入力して登録' do
       it '登録できる' do
+        booking = Booking.new(title: "お誕生日おめでとう", content: "Happy Birthday", start_time: "2023/9/1", contact: contact, category: category)
         expect(booking).to be_valid
       end
     end
     context '祝い言の内容を入力しないで登録' do
       it '登録できない' do
-        expect(thrid_booking).not_to be_valid
+        booking = Booking.new(title: "お誕生日おめでとう", content: nil, start_time: "2023/9/1", contact: contact, category: category)
+        expect(booking).to be_invalid
       end
     end
     context '祝い言の内容が141字以上の場合' do
       it '登録できない' do
-        booking = Booking.new(content: 'a' * 141)
-        booking.valid?
-        expect(booking.errors[:content]).to include("エラー")
+        booking = Booking.new(title: "お誕生日おめでとう", content: "a" * 141, start_time: "2023/9/1", contact: contact, category: category)
+        expect(booking).to be_invalid
       end
     end
   end
