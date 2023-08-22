@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Booking, type: :model do
   describe 'validationのテスト' do
-    let!(:booking){FactoryBot.create(:booking, title: 'Hello', content: 'Long time no see!', category: 'その他', contact: 'WEF11')}
+    let!(:user){FactoryBot.create(:user)}
+    let!(:contact){FactoryBot.create(:contact, user: user)}
+    let!(:category){FactoryBot.create(:category, user: user)}
+    let!(:booking){FactoryBot.create(:booking, category: category, contact: contact)}
     let!(:second_booking){FactoryBot.create(:second_booking, title: nil, content: 'お誕生日おめでとうございます', category: '誕生日', contact: 'WEF11')}
     let!(:thrid_booking){FactoryBot.create(:third_booking, title: こんにちは, content: nil, category: '誕生日', contact: 'WEF11')}
     context '祝い言のタイトルと内容を入力して登録' do
