@@ -1,22 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Booking, type: :model do
-  describe 'scopeのテスト' do
-    let!(:booking){FactoryBot.create(:booking, title: 'Hello', category: 'その他')}
-    let!(:second_booking){FactoryBot.create(:second_booking, title: 'task2', priority: '未着手')}
-    context 'タスクのタイトルを検索欄に入力' do
-      it '検索ができる' do
-        expect(Task.search_by_title('task1').count).to eq 1
+  describe 'validationのテスト' do
+    let!(:user){FactoryBot.create(:user)}
+    let!(:contact){FactoryBot.create(:contact, user: user)}
+    let!(:category){FactoryBot.create(:category)}
+    context '祝い言のタイトルと内容を入力して登録' do
+      it '登録できる' do
+        booking = Booking.new(title: "お誕生日おめでとう", content: "Happy Birthday", start_time: "2023/9/1", contact: contact, category: category)
+        expect(booking).to be_valid
       end
     end
-    context 'タスクのステータスを検索欄で選択' do
-      it '検索ができる' do
-        expect(Task.search_by_priority('未着手').count).to eq 2
+    context '祝い言の内容を入力しないで登録' do
+      it '登録できない' do
+        booking = Booking.new(title: "お誕生日おめでとう", content: nil, start_time: "2023/9/1", contact: contact, category: category)
+        expect(booking).to be_invalid
       end
     end
-    context 'タスクのタイトルとステータスを検索欄に入力' do
-      it '検索ができる' do
-        expect(Task.search_by_title('task1').search_by_priority('未着手').count).to eq 1
+    context '祝い言の内容が141字以上の場合' do
+      it '登録できない' do
+        booking = Booking.new(title: "お誕生日おめでとう", content: "a" * 141, start_time: "2023/9/1", contact: contact, category: category)
+        expect(booking).to be_invalid
       end
     end
   end

@@ -2,6 +2,7 @@ class Booking < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
   validates :content, length: {in: 1..140}
+  validates :start_time, presence: true
   
   belongs_to :category
   belongs_to :contact

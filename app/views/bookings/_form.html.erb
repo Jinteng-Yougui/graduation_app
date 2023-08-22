@@ -22,18 +22,18 @@
   </div>
 
   <div class="field">
-  <%= form.label :祝い言を送る相手 %>
-    <%= form.select :contact_id, current_user.contacts.pluck(:name, :id) %>
+    <%= form.label :祝い言を送る相手 %>
+      <%= form.select :contact_id, current_user.contacts.pluck(:name, :id), {}, {class: "form-control"} %>
   </div>
 
   <div class="field">
     <%= form.label :日付 %>
-    <%= form.date_field :start_time %>
+    <%= form.date_field :start_time, class: "form-control" %>
   </div>
 
   <div class="field">
   <%= form.label :祝い言カテゴリー %>
-    <%= form.select :category_id, Category.all.pluck(:name, :id) %>
+    <%= form.select :category_id, Category.all.pluck(:name, :id), {}, {class: "form-control"} %>
   </div> 
 
   <div class="text-center">
