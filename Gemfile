@@ -82,3 +82,6 @@ gem 'cancancan'
 gem 'whenever', require: false
 gem 'simple_calendar'
 gem 'rails-i18n'
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
