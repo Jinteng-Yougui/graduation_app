@@ -22,7 +22,7 @@ category_array.each do |category|
     name: category
   )
 end
-start_time_array = ["8/24/2023", "8/30/2023", "12/25/2023", "1/1/2024", "9/1/2023"]
+start_time_array = ["2023/8/23", "2023/8/30", "2023/12/25", "2024/1/1", "2023/9/1"]
 Contact.all.each do |contact|
   Booking.create!(
     title: "Hi",
