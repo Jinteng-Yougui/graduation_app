@@ -13,6 +13,8 @@ module Iwaigotauto
     config.i18n.available_locales = [:ja, :en]
     config.i18n.default_locale = :ja
 
+    config.paths.add 'lib', eager_load: true
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
