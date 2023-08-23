@@ -5,11 +5,6 @@
   </p>
 </div>
 
-<div style="width: 500px;">
-  <p class="text-center"><%= flash[:notice] %></p>
-</div>
-
-
 <div class="container mt-5 text-center">
   <h2>送信予定一覧</h2>
   <%= month_calendar events: @booking_events do |date, bookings| %>
@@ -44,7 +39,7 @@
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.contact.name %></td>
-        <td><%= booking.start_time.strftime('%Y-%m-%d') %></td>
+        <td><%= booking.start_time.strftime('%Y年%m月%d日') %></td>
         <td><%= booking.category.name %></td>          
         <td><button type="button" class="btn btn-outline-info"><%= link_to '詳細', booking_path(booking.id) %></button></td>
       </tr>

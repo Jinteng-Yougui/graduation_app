@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
       if @booking.save
         selected_date = params[:booking][:start_time]
         contact = Contact.find_by(name: "contact_id")
-        BookingMailer.send_mail(@booking).deliver
+        # BookingMailer.send_mail(@booking).deliver
         format.html { redirect_to booking_url(@booking), notice: "祝い言を登録しました。" }
         format.json { render :show, status: :created, location: @booking }
       else
