@@ -9,11 +9,18 @@ RSpec.describe 'ユーザーの登録に関連する機能', type: :system do
         fill_in 'user_password', with: 'yuki@yuki.com'
         fill_in 'user_password_confirmation', with: 'yuki@yuki.com'
         click_button '登録'
-        @user = User.find_by(email: 'yuki@yuki.com')
+        expect(page).to have_content 'アカウント登録が完了しました。'
+      end
+    end
+    context 'ユーザー情報をログイン画面で入力した場合' do
+      it 'ログインできる' do
+        FactoryBot.create(:user)
+        # @user = User.find_by(email: 'yuki@yuki.com')
+        visit new_user_session_path
         fill_in 'user_email', with: 'yuki@yuki.com'
         fill_in 'user_password', with: 'yuki@yuki.com'
         click_button 'ログイン'
-        expect(page).to have_content'ログインしました。'
+        expect(page).to have_content 'ログインしました。'
       end
     end
   end
