@@ -14,7 +14,7 @@ rails_env = ENV['RAILS_ENV'] || :development
 set :output, "#{Rails.root}/log/cron.log"
 set :environment, rails_env
 
-every 1.day, at: '6:03 pm' do
+every 1.day, at: '9:45 am' do
   runner "Booking.send_scheduled_email"
 end
 #   command "/usr/bin/some_great_command"
