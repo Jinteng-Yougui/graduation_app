@@ -10,7 +10,6 @@ RSpec.describe 'ユーザーの登録に関連する機能', type: :system do
         fill_in 'user_password_confirmation', with: 'yuki@yuki.com'
         click_button '登録'
         @user = User.find_by(email: 'yuki@yuki.com')
-        @user.confirm
         fill_in 'user_email', with: 'yuki@yuki.com'
         fill_in 'user_password', with: 'yuki@yuki.com'
         click_button 'ログイン'

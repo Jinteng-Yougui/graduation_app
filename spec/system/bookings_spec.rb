@@ -7,7 +7,6 @@ RSpec.describe '祝い言の登録に関連する機能', type: :system do
     let!(:booking) { FactoryBot.create(:booking, category: category, contact: contact) }
     before do
       visit root_path
-      user.confirm
     end
     context 'ログインして連絡先を新しく追加したい場合' do
       it '連絡先追加画面で必要な情報を入力する' do
@@ -27,13 +26,27 @@ RSpec.describe '祝い言の登録に関連する機能', type: :system do
         fill_in 'user_password', with: 'yuki@yuki.com'
         click_button 'ログイン'
         visit new_booking_path
-        fill_in 'booking_title', with: '誕生日おめでとう'
+        fill_in 'booking_title', with: 'お誕生日おめでとう'
         fill_in 'booking_content', with: 'Happy Birthday'
         select '平仮名', from: 'booking_contact_id'
         fill_in 'booking_start_time', with: '002023-08-31'
         select 'その他', from: 'booking_category_id'
         click_button '登録'
         expect(page).to have_content('登録しました')
+      end
+      it '作成した祝い言が指定した日にカレンダーに表示される' do
+        fill_in 'user_email', with: 'yuki@yuki.com'
+        fill_in 'user_password', with: 'yuki@yuki.com'
+        click_button 'ログイン'
+        visit new_booking_path
+        fill_in 'booking_title', with: 'お誕生日おめでとう'
+        fill_in 'booking_content', with: 'Happy Birthday'
+        select '平仮名', from: 'booking_contact_id'
+        fill_in 'booking_start_time', with: '002023-08-23'
+        select 'その他', from: 'booking_category_id'
+        click_button '登録'
+        visit root_path
+        expect(page).to have_content('"その他"の祝い言')
       end
     end
   end
