@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'spring'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -37,6 +36,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 4.1.0'
   gem 'factory_bot_rails'
+  gem 'spring'
   gem 'rexml'
   gem 'spring-commands-rspec'
   gem 'launchy'
