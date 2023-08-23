@@ -10,11 +10,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/environment')
 set :path_env, ENV['PATH']
 job_type :runner, "cd :path && PATH=':path_env' bin/rails runner -e :environment ':task' :output"
-rails_env = ENV['RAILS_ENV'] || :development
+rails_env = ENV['RAILS_ENV'].to_sym || :development
 set :output, "#{Rails.root}/log/cron.log"
 set :environment, rails_env
 
-every 1.day, at: '5:35 pm' do
+every 1.day, at: '5:48 pm' do
   runner "Booking.send_scheduled_email"
 end
 #   command "/usr/bin/some_great_command"
